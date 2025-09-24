@@ -12,12 +12,19 @@ let double = ( keer) => {
 
 }
 
-console.log(double(7))
+//console.log(double(7))\\
 
 
-let filterEvens = (getalen) => {
-    return getalen * 2 ;
+let filterEvens = (getallen) => {
+    let evens = []
 
+    for (let i = 0; i < getallen.length; i++) {
+        const element = getallen[i];
+        if (element %2 === 0) {
+            evens.push(element)
+        }
+    }
+    return evens
 }
 
-console.log(filterEvens(2))
+console.log(filterEvens([1, 2, 3, 4, 5]))

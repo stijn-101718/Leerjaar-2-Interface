@@ -3,12 +3,12 @@ let globalVar = 10;
 const myObject = {
     waarde: 5,
     regularFunction: function() {
-        console.log(this.waarde);    // 5
-        console.log(globalVar);      // 10
+        console.log(this.waarde);    
+        console.log(globalVar);      
     },
     arrowFunction: () => {
-        console.log(this.waarde);    // undefined
-        console.log(globalVar);      // 10
+        console.log(this.waarde);   
+        console.log(globalVar);     
     }
 }
 

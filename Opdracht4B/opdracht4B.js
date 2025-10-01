@@ -1,4 +1,5 @@
-import { add, subtract } from './mathUtils.js';
+import {  hoofdletter, reverse, countChars } from './stringUtils.js';
 
-console.log(add(5, 5));      // output: 10
-console.log(subtract(10, 2)); // output: 8
+console.log(hoofdletter("a b c d e f"));   
+console.log(reverse("1 2 3 4 5"));
+console.log(countChars("stijn"));   

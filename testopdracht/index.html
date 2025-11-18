@@ -1,0 +1,135 @@
+<!doctype html> 
+
+<html lang="nl"> 
+
+<head> 
+
+<meta charset="utf-8" /> 
+
+<meta name="viewport" content="width=device-width,initial-scale=1" /> 
+
+<title>Simpel zoeken</title> 
+
+<style> 
+
+body{font-family:Arial;padding:20px;max-width:600px;margin:auto} 
+
+input{width:100%;padding:8px;margin-bottom:12px} 
+
+li{padding:6px 0;border-bottom:1px solid #eee} 
+
+</style> 
+
+</head> 
+
+<body> 
+
+<h2>Zoek items</h2> 
+
+<input id="q" placeholder="Typ om te zoeken..." autofocus /> 
+
+<ul id="list"></ul> 
+
+ 
+
+<script> 
+
+// Heel simpel: data staat inline als array van namen 
+
+const items = [ 
+
+"Appel", 
+
+"Banaan", 
+
+"Citroen", 
+
+"Druif", 
+
+"Perzik", 
+
+"Mango", 
+
+"Sinaasappel" 
+
+]; 
+
+ 
+
+const q = document.getElementById('q'); 
+
+const list = document.getElementById('list'); 
+
+ 
+
+// Render functie 
+
+function render(array) { 
+
+if (!array.length) { 
+
+list.innerHTML = '<li style="color:#888">Geen resultaten</li>'; 
+
+return; 
+
+} 
+
+list.innerHTML = array.map(item => `<li>${escapeHtml(item)}</li>`).join(''); 
+
+} 
+
+ 
+
+// Eenvoudige case-insensitive zoekfunctie (substring) 
+
+function search(text) { 
+
+text = text.trim().toLowerCase(); 
+
+if (!text) return items; 
+
+return items.filter(it => it.toLowerCase().includes(text)); 
+
+} 
+
+ 
+
+// Kleine HTML-escape om XSS te vermijden 
+
+function escapeHtml(s) { 
+
+return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); 
+
+} 
+
+ 
+
+// Init: laat alle items zien 
+
+render(items); 
+
+ 
+
+// Luister op invoer 
+
+q.addEventListener('input', e => { 
+
+render(search(e.target.value)); 
+
+}); 
+
+</script> 
+
+</body> 
+
+</html> 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
